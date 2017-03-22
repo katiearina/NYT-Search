@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NY Tinmes App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
+<!--     <link rel="stylesheet" href="./assets/css/style.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="./assets/javascript/script.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron">
+
+    </div>
+    <div class="container">
+        <div class="panel panel-default">
+            <form>
+
+                <div class="form-group">
+                    <label for="search-box">Search</label>
+                    <input class="form-control" id="search-box" placeholder="Search">
+                </div>
+
+                <div class="form-group">
+                    <label for="search-num">Number of Records to Retrieve</label>
+                    <select class="form-control" id="search-num">
+                        <option>5</option>
+                        <option>10</option>
+                        <option>15</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="start-year">Start Year (Optional):</label>
+                    <input class="form-control" id="start-year" placeholder="1900">
+                </div>
+
+                <div class="form-group">
+                    <label for="start-year">End Year (Optional):</label>
+                    <input class="form-control" id="end-year" placeholder="2000">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Search</button>
+                <button class="btn btn-info">Clear Results</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body" id="search-results">A Basic Panel</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
