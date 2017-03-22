@@ -4,19 +4,21 @@ var beginYearInput = $("#start-year").val().trim();
 var beginYearSearch = beginYearInput + 0101;
 var endYearInput = $("#end-year").val().trim();
 var endYearSearch = endYearInput + 1231;
+var searchCount = $("#search-num").val();
 
 url += '?' + $.param({
 	'q': search,
 	'api-key': "aca26c04925149fa8f42f16e0ef758fb",
 	'begin_date': beginYearSearch,
-	'end_date': endYearSearch
+	'end_date': endYearSearch,
+	'page': searchCount
 });
 $.ajax({
   url: url,
   method: 'GET',
 }).done(function(result) {
   console.log(result);
-
+  $("#search-results").text(JSON.stringify(result));
 }).fail(function(err) {
   throw err;
 });
