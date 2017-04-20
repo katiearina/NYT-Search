@@ -1,4 +1,13 @@
 #ny-times {
     font-family: TimesNewRoman,Times New Roman,Times,Baskerville,Georgia,serif; 
     text-align: center;
+    color: white;
+}
+
+a, a:hover, a:visited, a:active {
+	text-decoration: none;
+}
+
+.btn {
+	margin-right: 10px;
 }

@@ -1,40 +1,36 @@
-// var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-// var search = $("#search-box").val();
-// var beginYearInput = $("#start-year").val();
-// var beginYearSearch = beginYearInput + 0101;
-// var endYearInput = $("#end-year").val();
-// var endYearSearch = endYearInput + 1231;
-// var searchCount = $("#search-num").val();
+//---------------------------------------------------------------------------
+// VARIABLE DECLARATIONS!
 
-// url += '?' + $.param({
-// 	'q': search,
-// 	'api-key': "aca26c04925149fa8f42f16e0ef758fb",
-// 	'begin_date': beginYearSearch,
-// 	'end_date': endYearSearch,
-// 	'page': searchCount
-// });
+//---------------------------------------------------------------------------
+// FUNCTION DECLARATIONS!
 
-// // url += '?' + $.param({
-// // 	'q': "Clinton",
-// // 	'api-key': "aca26c04925149fa8f42f16e0ef758fb",
-// // 	'begin_date': 20000101,
-// // 	'end_date': 20151231,
-// // 	'page': 5
-// // });
+//---------------------------------------------------------------------------
+// FUNCTION CALLS!
 
-//   console.log(url);
-// $.ajax({
-//   url: url,
-//   method: 'GET',
-// }).done(function(result) {
-//   console.log(result);
-//   $("#search-results").text(JSON.stringify(result));
-// }).fail(function(err) {
-//   throw err;
-// });
+// On page load
+$(document).ready(function() {
 
-$( document ).ready(function() {
+// Clear and hide search results
+$("#search-results").hide;
+$("#search-results").val("");
 
+// On Clear Button click
+$("#clear-button").on("click", function(event) {
+	// Prevent default action
+	event.preventDefault();
+
+	// Clear and hide search results
+	$("#search-results").hide;
+	$("#search-results").html("");
+
+	// Clear search boxes
+	$("#search-box").val("");
+	$("#start-year").val("");
+	$("#end-year").val("");
+	$("#search-num").val("");
+});
+
+// On Search Button click
 $("#search-button").on("click", function(event) {
 	event.preventDefault();
 	var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
@@ -42,7 +38,7 @@ $("#search-button").on("click", function(event) {
 	var beginYearInput = $("#start-year").val();
 	var beginYearSearch = beginYearInput + "0101";
 	var endYearInput = $("#end-year").val();
-	var endYearSearch = endYearInput + 1231;
+	var endYearSearch = endYearInput + "1231";
 	var searchCount = $("#search-num").val();
 
 	url += '?' + $.param({
@@ -53,21 +49,18 @@ $("#search-button").on("click", function(event) {
 		'page': searchCount
 	});
 
-	// url += '?' + $.param({
-	// 	'q': "Clinton",
-	// 	'api-key': "aca26c04925149fa8f42f16e0ef758fb",
-	// 	'begin_date': 20000101,
-	// 	'end_date': 20151231,
-	// 	'page': 5
-	// });
-
 	  console.log(url);
 	$.ajax({
 	  url: url,
 	  method: 'GET',
 	}).done(function(result) {
+		$("#search-results").show;
 	  console.log(result);
-	  $("#search-results").text(JSON.stringify(result));
+	  console.log(searchCount);
+	  for (var i = 0; i < searchCount; i++) {
+	  	console.log(result.response.docs[i].lead_paragraph);
+	  $("#search-results").append('<div class="panel-body">' + result.response.docs[i].lead_paragraph + '</div>');
+	}
 	}).fail(function(err) {
 	  throw err;
 	});
