@@ -44,15 +44,27 @@ $("#search-button").on("click", function(event) {
 	url += '?' + $.param({
 		'q': search,
 		'api-key': "aca26c04925149fa8f42f16e0ef758fb",
-		'begin_date': beginYearSearch,
-		'end_date': endYearSearch,
 		'page': searchCount
 	});
 
+	// added conditional to check if dates have been put in the text box before adding them to the url
+	if ($("#start-year").val() !== "") {
+		url += "&" + $.param({
+			'begin_date': beginYearInput + "0101"
+		});
+	}
+		
+	if ($("#end-year").val() !== "") {
+		url += "&" + $.param({
+			'end_date': endYearInput + "1231"
+		});
+	}
+
 	  console.log(url);
+
 	$.ajax({
-	  url: url,
-	  method: 'GET',
+		url: url,
+		method: 'GET',
 	}).done(function(result) {
 		$("#search-results").show;
 	  console.log(result);
@@ -62,7 +74,7 @@ $("#search-button").on("click", function(event) {
 	  $("#search-results").append('<div class="panel-body">' + result.response.docs[i].lead_paragraph + '</div>');
 	}
 	}).fail(function(err) {
-	  throw err;
+		throw err;
 	});
 });
 });
