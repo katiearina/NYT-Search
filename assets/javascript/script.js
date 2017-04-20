@@ -36,9 +36,9 @@ $("#search-button").on("click", function(event) {
 	var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 	var search = $("#search-box").val();
 	var beginYearInput = $("#start-year").val();
-	var beginYearSearch = beginYearInput + "0101";
+	// var beginYearSearch = beginYearInput + "0101";
 	var endYearInput = $("#end-year").val();
-	var endYearSearch = endYearInput + "1231";
+	// var endYearSearch = endYearInput + "1231";
 	var searchCount = $("#search-num").val();
 
 	url += '?' + $.param({
