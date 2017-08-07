@@ -60,18 +60,18 @@ $("#search-button").on("click", function(event) {
 		});
 	}
 
-	  console.log(url);
+	  // console.log(url);
 
 	$.ajax({
 		url: url,
 		method: 'GET',
 	}).done(function(result) {
 		$("#search-results").show;
-	  console.log(result);
-	  console.log(searchCount);
+	  // console.log(result);
+	  // console.log(searchCount);
 	  for (var i = 0; i < searchCount; i++) {
-	  	console.log(result.response.docs[i].lead_paragraph);
-	  $("#search-results").append('<div class="panel-body">' + result.response.docs[i].lead_paragraph + '</div>');
+	  	// console.log(result.response.docs[i].snippet);
+	  $("#search-results").append('<div class="panel-body">' + result.response.docs[i].snippet + '</div>');
 	}
 	}).fail(function(err) {
 		throw err;
